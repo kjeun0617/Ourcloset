@@ -52,13 +52,18 @@ public class ChangeScreen extends AppCompatActivity{
             }
         });
 }
+    
 
-public class ListActivity extends AppCompatActivity {
+public class ListingActivity extends AppCompatActivity {
 
+   
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.closet_main);
+
+       
+
     }
 
     class ClotheAdapter extends BaseAdapter{
@@ -84,9 +89,9 @@ public class ListActivity extends AppCompatActivity {
 
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
-            ClotheViewer clotheViewer = new ClotheViewer(getApplicationContext());
-            clotheviewer.setItem(items.get(i));
-            return clotheViewer;
+            ClotheViewer singerViewer = new ClotheViewer(getApplicationContext());
+            ClotheViewer.setItem(items.get(i));
+            return ClotheViewer;
         }
     }
 }
