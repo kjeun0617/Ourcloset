@@ -14,6 +14,7 @@ public class Closetlist extends AppCompatActivity {
 public class ClotheViewer extends LinearLayout {
 
     TextView textView;
+    TextView textView2;
     ImageView imageView;
     public ClotheViewer(Context context) {
         super(context);
@@ -29,14 +30,16 @@ public class ClotheViewer extends LinearLayout {
 
     public void init(Context context){
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.clotheitem,this,true);
+        inflater.inflate(R.layout.closetlist,this,true);
 
         textView = (TextView)findViewById(R.id.textView);
+        textView2 = (TextView)findViewById(R.id.textView2);
         imageView = (ImageView) findViewById(R.id.imageView);
     }
 
-    public void setItem(ClotheItem clotheItem){
-        textView.setText(clotheItem.getName());
+    public void setItem(ClotheItem singerItem){
+        textView.setText(ClotheItem.getName());
+        textView2.setText(ClotheItem.getTel());
         imageView.setImageResource(clotheItem.getImage());
     }
 }
