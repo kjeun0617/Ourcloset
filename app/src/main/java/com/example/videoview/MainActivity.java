@@ -90,3 +90,55 @@ public class ListActivity extends AppCompatActivity {
         }
     }
 }
+
+// 어댑터 사용 목록 생성, 아이템 클릭 구현
+
+public class MainActivity extends AppCompatActivity {
+
+    GridView gridView;
+    EditText editText;
+    Button button;
+    SingerAdapter singerAdapter;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        //여기 뭔가 이상하다
+        gridView = (GridView)findViewById(R.id.gridView);
+        editText = (EditText)findViewById(R.id.editText);
+        button = (Button)findViewById(R.id.button);
+        //
+
+        clotheAdapter = new clotheAdapter();
+        clotheAdapter.addItem(new ClotherItem("상의", R.drawable.singer));
+        clotheAdapter.addItem(new ClotheItem("하의", R.drawable.singer2));
+
+        gridView.setAdapter(clotheAdapter);
+
+        //여기 뭔소리지
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                  Toast.makeText(getApplicationContext(),"이름 : "+ clotheAdapter.getItem(i).getName().toString().Toast.LENGTH_LONG).show();  //
+
+            }
+        });
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String name = editText.getText().toString().trim();
+                clotheAdapter.addItem(new ClotheItem(name,R.drawable.singer));
+
+            }
+        });
+
+
+
+    }
+
+    class ClotheAdapter extends BaseAdapter{
+        
+    }
