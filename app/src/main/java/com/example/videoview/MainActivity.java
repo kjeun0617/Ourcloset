@@ -7,12 +7,12 @@ import android.os.Bundle;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
-import android.content.Intent;
+/* import android.content.Intent;
 import android.view.View;
-import android.widget.Button;
+import android.widget.Button; */
 
 
-public class MainActivity extends AppCompatActivity {
+public class VideoPlay extends AppCompatActivity {
 
     private VideoView videoView; // 비디오를 실행할 수 있게 도와주는 뷰
     private MediaController mediaController; // 재생이나 정지와 같은 미디어 제어 버튼부를 담당
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         videoView.start(); // 비디오 실행!\
     }
     
-    @Override
+    /* @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -47,6 +47,46 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), Closetlist.class);
                 startActivity(intent);
             }
-        });
+        }); */
 }
  
+
+// 옷 선택 위젯 어댑터 정의
+
+public class ListActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    class ClotheAdapter extends BaseAdapter{
+        ArrayList<ClotheItem> items = new ArrayList<ClotheItem>();
+        @Override
+        public int getCount() {
+            return items.size();
+        }
+
+        public void addItem(ClotheItem clotheItem){
+            items.add(clotheItem);
+        }
+
+        @Override
+        public ClotheItem getItem(int i) {
+            return items.get(i);
+        }
+
+        @Override
+        public long getItemId(int i) {
+            return i;
+        }
+
+        @Override
+        public View getView(int i, View view, ViewGroup viewGroup) {
+            ClotheViewer clotheViewer = new ClotheViewer(getApplicationContext());
+            clotheviewer.setItem(items.get(i));
+            return clotheViewer;
+        }
+    }
+}
