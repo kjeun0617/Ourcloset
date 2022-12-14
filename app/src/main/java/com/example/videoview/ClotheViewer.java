@@ -2,7 +2,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
  
-public class Closetlist extends AppCompatActivity {
+public class ClotheViewer extends AppCompatActivity {  // 버튼 누르면 이 화면으로 전환
  
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -11,7 +11,7 @@ public class Closetlist extends AppCompatActivity {
     }
 }
 
-public class ClotheViewer extends LinearLayout {
+public class ClotheViewer extends LinearLayout {   // 데이터 정의할 클래스 설계
 
     TextView textView;
     TextView textView2;
