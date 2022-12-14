@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.Button;
 
 
-public class VideoPlay extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {  // 비디오 실행
 
     private VideoView videoView; // 비디오를 실행할 수 있게 도와주는 뷰
     private MediaController mediaController; // 재생이나 정지와 같은 미디어 제어 버튼부를 담당
@@ -33,7 +33,7 @@ public class VideoPlay extends AppCompatActivity {
     }
     
     
-public class ChangeScreen extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity{  // 화면 전환
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +54,7 @@ public class ChangeScreen extends AppCompatActivity{
 }
     
 
-public class ListingActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {  // 선택 위젯 띄움, 
 
    
     @Override
@@ -98,39 +98,59 @@ public class ListingActivity extends AppCompatActivity {
 
 // 어댑터 사용 목록 생성, 아이템 클릭 구현
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {   // 그리드뷰에서 어댑터 사용, 목록 생성
 
     GridView gridView;
     EditText editText;
+    EditText editText2;
     Button button;
-    SingerAdapter singerAdapter;
+    SingerAdapter clotheAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.closetlist);
-        
+        setContentView(R.layout.clothe_main);
+
         gridView = (GridView)findViewById(R.id.gridView);
         editText = (EditText)findViewById(R.id.editText);
+        editText2 = (EditText)findViewById(R.id.editText2);
         button = (Button)findViewById(R.id.button);
 
-        clotheAdapter = new clotheAdapter();
-        clotheAdapter.addItem(new ClotherItem("상의", R.drawable.pic1));
-        clotheAdapter.addItem(new ClotheItem("하의", R.drawable.pic2));
+        singerAdapter = new SingerAdapter();
+        singerAdapter.addItem(new SingerItem("상의","첫번째 서랍",R.drawable.clothe1));
+        singerAdapter.addItem(new SingerItem("하의","두번째 서랍",R.drawable.clothe2));
+
 
         gridView.setAdapter(clotheAdapter);
-
-        // so difficult
+        
+        /*  해당 아이템 선택시 어쩌구 ~
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                  Toast.makeText(getApplicationContext(),"이름 : "+ clotheAdapter.getItem(i).getName().toString().Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"옷 별칭 : "+ clotheAdapter.getItem(i).getName().toString() + " , Locate : "+clotheAdapter.getItem(i).getTel().toString(),Toast.LENGTH_LONG).show();
 
             }
         });
-        
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String name = editText.getText().toString().trim();
+                String tel = editText2.getText().toString().trim();
+                clotheAdapter.addItem(new SingerItem(name,tel,R.drawable.singer));
+
+            }
+        });  */
+
+
+
     }
 
     class ClotheAdapter extends BaseAdapter{
-        
+
+
+        ...
+
+
     }
+}
