@@ -47,14 +47,11 @@ public class ChangeScreen extends AppCompatActivity{
  
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(getApplicationContext(), id.class);  //class?
+                Intent intent = new Intent(getApplicationContext(), id.ClotheView.class); 
                 startActivity(intent);
             }
         });
 }
- 
-
-// 옷 선택 위젯 어댑터 정의
 
 public class ListActivity extends AppCompatActivity {
 
@@ -106,40 +103,27 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        //여기 뭔가 이상하다
+        setContentView(R.layout.closetlist);
+        
         gridView = (GridView)findViewById(R.id.gridView);
         editText = (EditText)findViewById(R.id.editText);
         button = (Button)findViewById(R.id.button);
-        //
 
         clotheAdapter = new clotheAdapter();
-        clotheAdapter.addItem(new ClotherItem("상의", R.drawable.singer));
-        clotheAdapter.addItem(new ClotheItem("하의", R.drawable.singer2));
+        clotheAdapter.addItem(new ClotherItem("상의", R.drawable.pic1));
+        clotheAdapter.addItem(new ClotheItem("하의", R.drawable.pic2));
 
         gridView.setAdapter(clotheAdapter);
 
-        //여기 뭔소리지
+        // so difficult
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                  Toast.makeText(getApplicationContext(),"이름 : "+ clotheAdapter.getItem(i).getName().toString().Toast.LENGTH_LONG).show();  //
+                  Toast.makeText(getApplicationContext(),"이름 : "+ clotheAdapter.getItem(i).getName().toString().Toast.LENGTH_LONG).show();
 
             }
         });
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String name = editText.getText().toString().trim();
-                clotheAdapter.addItem(new ClotheItem(name,R.drawable.singer));
-
-            }
-        });
-
-
-
+        
     }
 
     class ClotheAdapter extends BaseAdapter{
