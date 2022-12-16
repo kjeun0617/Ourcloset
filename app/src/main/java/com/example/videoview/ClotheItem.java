@@ -1,12 +1,14 @@
+package com.example.OurCloset;
+
 public class ClotheItem {
 
     private String name;
     private String locate;
     private int image;
 
-    public SingerItem(String name, String locate, int image) {
+    public ClotheItem(String name, String locate, int image) {
         this.name = name;
-        this.locate = tel;
+        this.locate = locate;
         this.image = image;
     }
 
