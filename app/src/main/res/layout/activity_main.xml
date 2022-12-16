@@ -13,4 +13,10 @@
         tools:layout_editor_absoluteX="161dp"
         tools:layout_editor_absoluteY="357dp"
         tools:ignore="HardcodedText,MissingConstraints" />
+    
+    <VideoView
+        android:id="@+id/video_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+    </VideoView>
 </androidx.constraintlayout.widget.ConstraintLayout>
