@@ -1,17 +1,14 @@
-import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
- 
-public class ClotheViewer extends AppCompatActivity {  // 버튼 누르면 이 화면으로 전환
- 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.closetlist);
-    }
-}
+package com.example.OurCloset;
 
-public class ClotheViewer extends LinearLayout {   // 데이터 정의할 클래스 설계
+import android.content.Context;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+
+public class ClotheViewer extends LayoutInflater {
 
     TextView textView;
     TextView textView2;
@@ -30,16 +27,16 @@ public class ClotheViewer extends LinearLayout {   // 데이터 정의할 클래
 
     public void init(Context context){
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.closetlist,this,true);
+        inflater.inflate(R.layout.clotheitem,this,true);
 
-        textView = (TextView)findViewById(R.id.textView);
-        textView2 = (TextView)findViewById(R.id.textView2);
-        imageView = (ImageView) findViewById(R.id.imageView);
+        textView = (TextView) textView.findViewById();
+        textView2 = (TextView) textView2.findViewById();
+        imageView = (ImageView) imageView.findViewById();
     }
 
-    public void setItem(ClotheItem singerItem){
-        textView.setText(ClotheItem.getName());
-        textView2.setText(ClotheItem.getTel());
+    public void setItem(ClotheItem clotheItem){
+        textView.setText(clotheItem.getName());
+        textView2.setText(clotheItem.getTel());
         imageView.setImageResource(clotheItem.getImage());
     }
 }
