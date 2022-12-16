@@ -123,11 +123,10 @@ public class MainActivity extends AppCompatActivity {   // 그리드뷰에서 �
 
         gridView.setAdapter(clotheAdapter);
         
-        /*  해당 아이템 선택시 어쩌구 ~
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getApplicationContext(),"옷 별칭 : "+ clotheAdapter.getItem(i).getName().toString() + " , Locate : "+clotheAdapter.getItem(i).getTel().toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"옷 별칭 : "+ clotheAdapter.getItem(i).getName().toString() + " , 위치 : "+clotheAdapter.getItem(i).getTel().toString(),Toast.LENGTH_LONG).show();
 
             }
         });
