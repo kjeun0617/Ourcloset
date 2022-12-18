@@ -1,36 +1,80 @@
-package com.example.videoview;
+package com.example.button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.res.Configuration;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.MediaController;
+import android.widget.Toast;
 import android.widget.VideoView;
 
-import android.content.Intent;
-import android.view.View;
-import android.widget.Button;
 
-
-public class MainActivity extends AppCompatActivity {  // 비디오 실행
-
-    private VideoView videoView; // 비디오를 실행할 수 있게 도와주는 뷰
-    private MediaController mediaController; // 재생이나 정지와 같은 미디어 제어 버튼부를 담당
-    private final String videoURL = "https://www.youtube.com/shorts/ujtEHbRN1K0";
+public class MainActivity extends AppCompatActivity {
+    VideoView simpleVideoView;
+    MediaController mediaControls;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) { // 앱이 첫 실행됐을 때 이곳을 수행한다.
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        videoView = findViewById(R.id.videoView); // 비디오 뷰 아이디 연결
-        mediaController = new MediaController(this);
-        mediaController.setAnchorView(videoView);
-        Uri uri = Uri.parse(videoURL);
-        videoView.setMediaController(mediaController); // 미디어 제어 버튼부 세팅
-        videoView.setVideoURI(uri); // 비디오 뷰의 주소를 설정
-        videoView.start(); // 비디오 실행!
+        // Find your VideoView in your video_main.xml layout
+        simpleVideoView = (VideoView) findViewById(R.id.simpleVideoView);
+
+        if (mediaControls == null) {
+            // create an object of media controller class
+            mediaControls = new MediaController(MainActivity.this);
+            mediaControls.setAnchorView(simpleVideoView);
+        }
+        // set the media controller for video view
+        simpleVideoView.setMediaController(mediaControls);
+        // set the uri for the video view
+        simpleVideoView.setVideoURI(Uri.parse("https://www.youtube.com/shorts/ujtEHbRN1K0" + getPackageName() + "/"));
+        // start a video
+        simpleVideoView.start();
+
+        // implement on completion listener on video view
+        simpleVideoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                Toast.makeText(getApplicationContext(), "자 이제 시작!!", Toast.LENGTH_LONG).show();
+            }
+        });
+        simpleVideoView.setOnErrorListener(new MediaPlayer.OnErrorListener() {
+            @Override
+            public boolean onError(MediaPlayer mp, int what, int extra) {
+                Toast.makeText(getApplicationContext(), "어머낫! 오류가 발생했네요.", Toast.LENGTH_LONG).show();
+                return false;
+            }
+        });
     }
+
+    public void onButtonClick1(View v){
+        Toast.makeText(getApplicationContext(), "영상을 재생합니다.", Toast.LENGTH_LONG).show();
+        Intent video = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/shorts/ujtEHbRN1K0"));
+        startActivity(video);
+    }
+    //private void startActivity1() {
+   // }
+
+    public void onButtonClick2(View v){
+        Toast.makeText(getApplicationContext(), "옷장으로 갑니다.", Toast.LENGTH_LONG).show();
+        Intent closet = new Intent(Intent.ACTION_VIEW, Uri.parse("https://m.naver.com"));
+        startActivity(closet);
+    }
+   // private void startActivity2() {
+   // }
+}
     
     
 public class MainActivity extends AppCompatActivity{  // 화면 전환
