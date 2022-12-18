@@ -1,22 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/mycloset_btn"
+        android:id="@+id/button_url"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="내 옷장 보기"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="357dp"
-        tools:ignore="HardcodedText,MissingConstraints" />
-    
-    <VideoView
-        android:id="@+id/video_view"
+        android:onClick="onButtonClick1"
+        android:text="Video"
+        app:iconTint="@color/mint_200"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button2_url"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-    </VideoView>
+        android:layout_height="wrap_content"
+        android:onClick="onButtonClick2"
+        android:text="Closet"
+        app:iconTint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <VideoView
+            android:id="@+id/simpleVideoView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+    </RelativeLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
